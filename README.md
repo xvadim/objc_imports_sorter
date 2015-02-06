@@ -13,3 +13,6 @@ Reads input which should be block of Obj-C's import statements and sorts in the 
 #import "Projects"
 #import "Modules"
 ```
+
+
+See [this article](https://stavash.wordpress.com/tag/xcode-tips/) for instructions how to use it with XCode.
