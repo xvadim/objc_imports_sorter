@@ -17,7 +17,13 @@
 tempfoo=`basename $0`
 ORIG_FN=`mktemp ${TMPDIR:-'/tmp/'}${tempfoo}.XXXXXX`
 
-cat /dev/stdin > $ORIG_FN
+cat /dev/stdin | \
+    sed 's/^.*UIKit\.h\>/@import UIKit;/g' | \
+    sed 's/^.*AVFoundation\.h\>/@import AVFoundation;/g' | \
+    sed 's/^.*Foundation\.h\>/@import Foundation;/g' | \
+    sed 's/^.*GLKit\.h\>/@import GLKit;/g' \
+    > $ORIG_FN
+
 
 grep '@import' $ORIG_FN | sort | uniq
 echo
