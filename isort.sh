@@ -21,9 +21,11 @@ cat /dev/stdin | \
     sed 's/^.*UIKit\.h\>/@import UIKit;/g' | \
     sed 's/^.*AVFoundation\.h\>/@import AVFoundation;/g' | \
     sed 's/^.*Foundation\.h\>/@import Foundation;/g' | \
+    sed 's/^.*QuartzCore\.h\>/@import QuartzCore;/g' | \
+    sed 's/^.*Photos\.h\>/@import Photos;/g' | \
+    sed 's/^.*AssetsLibrary\.h\>/@import AssetsLibrary;/g' | \
     sed 's/^.*GLKit\.h\>/@import GLKit;/g' \
     > $ORIG_FN
-
 
 grep '@import' $ORIG_FN | sort | uniq
 echo
